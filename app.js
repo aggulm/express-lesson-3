@@ -25,6 +25,12 @@ const items = [
   { id: 10, name: "Fen Laifen SE Special 3476", price: 230, amount: 32 },
 ];
 
+app.get("/item", (req, res) => {
+  const offset = parseInt(req.query.offset);
+  const count = parseInt(req.query.count);
+  res.send({ items: items.slice(offset, offset + count), count: items.length });
+});
+
 app.get("/items", (req, res) => {
   res.json(items);
 });
